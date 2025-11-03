@@ -1,23 +1,20 @@
 package UI;
 
+import Clases.Usuario;
 import Clases.UsuarioDataService;
-import DataController.PeliculaDataService;
-import objetos.Pelicula;
-import objetos.Usuario;
-
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import java.util.List;
 
 public class TrueDataPanel extends JFrame {
     private JTable table1;
     private JPanel panel1;
     private JComboBox<String> comboBox1;
     private DefaultTableModel modelo_tabla;
+    private UsuarioDataService usuarioDataService = new UsuarioDataService();
 
 
     public TrueDataPanel() {
-        UsuarioDataService usuarioDataService = new UsuarioDataService();
-        usuarioDataService.getUsuarios();
         setTitle("Tabla de datos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -40,7 +37,7 @@ public class TrueDataPanel extends JFrame {
         modelo_tabla =new DefaultTableModel(columna,0);
         table1.setModel(modelo_tabla);
 
-        
+        List<Usuario> lista=usuarioDataService.getUsuarios();
 
     }
 
